@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./shared/shared.module";
+import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './modules/home/home.module';
 import { MaintenanceModule } from './modules/maintenance/maintenance.module';
 import { ScheduleModule } from './modules/schedule/schedule.module';
@@ -20,7 +21,8 @@ import { ScheduleModule } from './modules/schedule/schedule.module';
     SharedModule,
     HomeModule,
     MaintenanceModule,
-    ScheduleModule
+    ScheduleModule,
+    HttpClientModule
 ],
   providers: [],
   bootstrap: [AppComponent]
