@@ -1,0 +1,69 @@
+<div class="container text-center">
+
+  <div class="display-6">
+    Cadastro de Clientes:
+  </div>
+  <div class="border rounded shadow-sm p-4">
+    <form id="formClient" [formGroup]="formGroupClient" #formClient="ngForm">
+      <div class="row">
+        <div class="col-8 mx-auto">
+          <div class="row">
+            <div class="mb-3">
+              <label for="id" class="form-label">ID</label>
+              <input type="text" [readOnly]="true" class="form-control" id="id" name="id" formControlName="id">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+              <div *ngIf="formClient.submitted">
+                <small *ngIf="pfgname?.errors?.['required']" class="text-danger">
+                  O campo nome é obrigatório.
+                </small>
+                <small *ngIf="pfgname?.errors?.['minlength']" class="text-danger">
+                  Tamanho mínimo de 3 caracteres.
+                </small>
+              </div>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="phone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" required>
+                <div *ngIf="formClient.submitted">
+                  <small *ngIf="pfphone?.errors?.['required']" class="text-danger">
+                    O campo telefone é obrigatório.
+                  </small>
+                  <small *ngIf="pfphone?.errors?.['minlength']" class="text-danger">
+                    Tamanho mínimo de 9 caracteres.
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="dateOfbirth" class="form-label">Data Nascimento</label>
+                <input type="date" class="form-control" id="dateOfbirth" name="dateOfbirth"
+                  formControlName="dateOfbirth" required>
+                <div *ngIf="formClient.submitted">
+                  <small *ngIf="pfphone?.errors?.['required']" class="text-danger">
+                    O campo Data Nascimento é obrigatório.
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 text-end">
+                <button class="btn btn-secondary me-2" (click)="cancelForm()">Cancelar</button>
+                <button class="btn btn-primary" [disabled]="!formClient.dirty" (click)="saveClient()">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
