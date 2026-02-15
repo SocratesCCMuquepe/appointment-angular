@@ -18,7 +18,7 @@ export class ClientFormPageComponent {
 
   constructor(private clientService: ClientService, private formBuilder: FormBuilder, private location: Location, private activatedRoute: ActivatedRoute) {
     this.formGroupClient = this.formBuilder.group({
-      id: {disabled: true },
+      id: [''],
       name: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       dateOfbirth: ['', [Validators.required]]
