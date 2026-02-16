@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Client } from 'src/app/core/models/client';
 import { ClientService } from 'src/app/core/services/client.service';
 import { Page } from 'src/app/core/services/page';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-clients-table-page',
@@ -9,7 +10,7 @@ import { Page } from 'src/app/core/services/page';
   styleUrls: ['./clients-table-page.component.css']
 })
 export class ClientsTablePageComponent {
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService, private toastService: ToastService) { }
   clientPage: Page<Client> = {} as Page<Client>;
   page: number = 1;
   nameFillter: string = '';
@@ -33,8 +34,11 @@ export class ClientsTablePageComponent {
   }
   deleteClient(id: number) {
     this.clientService.deleteClient(id).subscribe({
-      next: () => this.loadClients(),
-      error: err => alert('Erro ao deletar cliente')
+      next: () => {
+        this.toastService.show('Cliente deletado com sucesso!', { classname: 'bg-success text-light', delay: 5000 });
+        this.loadClients();
+      },
+      error: err => this.toastService.show('Erro ao deletar cliente', { classname: 'bg-danger text-light', delay: 5000 })
     });
   }
 }

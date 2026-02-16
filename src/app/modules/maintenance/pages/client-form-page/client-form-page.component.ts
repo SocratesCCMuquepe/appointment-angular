@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/core/models/client';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-client-form-page',
@@ -16,7 +17,11 @@ export class ClientFormPageComponent {
   client: Client = {} as Client;
   isEditing = false;
 
-  constructor(private clientService: ClientService, private formBuilder: FormBuilder, private location: Location, private activatedRoute: ActivatedRoute) {
+  constructor(private clientService: ClientService,
+    private formBuilder: FormBuilder,
+    private location: Location,
+    private activatedRoute: ActivatedRoute,
+    private toastService: ToastService) {
     this.formGroupClient = this.formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
@@ -43,18 +48,21 @@ export class ClientFormPageComponent {
 
       this.clientService.updateClient(this.formGroupClient.value).subscribe({
         next: () => {
+          this.toastService.show('Cliente atualizado com sucesso!', { classname: 'bg-success text-light', delay: 5000 });
           this.location.back();
         },
-        error: () => alert('Erro ao atualizar cliente')
+        error: () =>
+          this.toastService.show('Erro ao atualizar cliente', { classname: 'bg-danger text-light', delay: 5000 })
       });
 
     } else {
 
       this.clientService.saveClient(this.formGroupClient.value).subscribe({
         next: () => {
+          this.toastService.show('Cliente salvo com sucesso!', { classname: 'bg-success text-light', delay: 5000 });
           this.location.back();
         },
-        error: () => alert('Erro ao salvar cliente')
+        error: () => this.toastService.show('Erro ao salvar cliente', { classname: 'bg-danger text-light', delay: 5000 })
       });
 
     }
