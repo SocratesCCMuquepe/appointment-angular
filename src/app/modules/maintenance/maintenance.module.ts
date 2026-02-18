@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientFormPageComponent } from './pages/client-form-page/client-form-page.component';
+import { SharedModule } from "src/app/shared/shared.module";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ClientFormPageComponent } from './pages/client-form-page/client-form-pa
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
-  ]
+    SharedModule
+]
 })
 export class MaintenanceModule { }

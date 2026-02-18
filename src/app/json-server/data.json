@@ -265,12 +265,6 @@
       "dateOfbirth": "2024-12-30"
     },
     {
-      "id": 46,
-      "name": "Mavis Colon",
-      "phone": "(244) 842-404",
-      "dateOfbirth": "2013-07-09"
-    },
-    {
       "id": 47,
       "name": "Ashlee Workman",
       "phone": "(244) 910-600",
@@ -293,12 +287,6 @@
       "name": "Roslyn Russo",
       "phone": "(244) 930-454",
       "dateOfbirth": "2023-12-22"
-    },
-    {
-      "id": 51,
-      "name": "Kristine Weiss",
-      "phone": "(244) 924-422",
-      "dateOfbirth": "2018-02-13"
     },
     {
       "id": 52,
@@ -335,12 +323,6 @@
       "name": "Cathryn Mendoza",
       "phone": "(244) 908-461",
       "dateOfbirth": "2019-03-02"
-    },
-    {
-      "id": 58,
-      "name": "Page Estes",
-      "phone": "(244) 929-463",
-      "dateOfbirth": "2017-05-25"
     },
     {
       "id": 59,
@@ -475,12 +457,6 @@
       "dateOfbirth": "2019-09-02"
     },
     {
-      "id": 81,
-      "name": "Anne York",
-      "phone": "(244) 981-529",
-      "dateOfbirth": "2017-08-22"
-    },
-    {
       "id": 82,
       "name": "Carolyn Gay",
       "phone": "(244) 882-481",
@@ -521,12 +497,6 @@
       "name": "Bass Austin Moroe",
       "phone": "(244) 966-552",
       "dateOfbirth": "2020-09-09"
-    },
-    {
-      "id": 89,
-      "name": "Mai Burton",
-      "phone": "(244) 813-501",
-      "dateOfbirth": "2016-04-15"
     },
     {
       "id": 90,
@@ -593,12 +563,6 @@
       "name": "Bertie Bender",
       "phone": "(244) 998-574",
       "dateOfbirth": "2024-05-25"
-    },
-    {
-      "name": "Márcia Cardoso",
-      "phone": "924556812",
-      "dateOfBirth": "2025-01-29",
-      "id": 102
     },
     {
       "id": 103,

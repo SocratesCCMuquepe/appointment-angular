@@ -3,6 +3,7 @@ import { Client } from 'src/app/core/models/client';
 import { ClientService } from 'src/app/core/services/client.service';
 import { Page } from 'src/app/core/services/page';
 import { ToastService } from 'src/app/core/services/toast.service';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-clients-table-page',
@@ -14,6 +15,10 @@ export class ClientsTablePageComponent {
   clientPage: Page<Client> = {} as Page<Client>;
   page: number = 1;
   nameFillter: string = '';
+
+  // Selecionar cliente para deletar
+  clientSelected !: Client;
+
   ngOnInit(): void {
     this.loadClients();
   }
@@ -32,13 +37,20 @@ export class ClientsTablePageComponent {
   searchClient() {
     this.loadClients();
   }
-  deleteClient(id: number) {
-    this.clientService.deleteClient(id).subscribe({
-      next: () => {
-        this.toastService.show('Cliente deletado com sucesso!', { classname: 'bg-success text-light', delay: 5000 });
-        this.loadClients();
-      },
-      error: err => this.toastService.show('Erro ao deletar cliente', { classname: 'bg-danger text-light', delay: 5000 })
-    });
+  deleteClient(id: number, modalConfirm: ModalComponent) {
+
+    this.clientSelected = this.clientPage.content?.find(client => client.id === id) as Client;
+
+    modalConfirm.open().then(result => {
+      if (result) {
+        this.clientService.deleteClient(id).subscribe({
+          next: () => {
+            this.toastService.show('Cliente deletado com sucesso!', { classname: 'bg-success text-light', delay: 5000 });
+            this.loadClients();
+          },
+          error: err => this.toastService.show('Erro ao deletar cliente', { classname: 'bg-danger text-light', delay: 5000 })
+        });
+      }
+    })
   }
 }
