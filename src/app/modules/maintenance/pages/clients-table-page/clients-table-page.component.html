@@ -28,11 +28,20 @@
           <td><a href="/client-form/{{client.id}}">{{client.name}}</a></td>
           <td>{{client.phone}}</td>
           <td>{{client.dateOfbirth | date: 'dd/MM/yyyy'}}</td>
-          <td (click)="deleteClient(client.id)"><img src="assets/svg/trash-fill.svg" width="20" height="20"
-              alt="Remover"></td>
+          <td (click)="deleteClient(client.id, modalConfirm)"><img src="assets/svg/trash-fill.svg" width="20" height="20"
+              alt="Remover">
+          <!--button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button-->
+          </td>
         </tr>
       <tbody>
     </table>
     <ngb-pagination class="d-flex justify-content-center" [collectionSize]="clientPage.numberOfElements" [(page)]="page"
       [boundaryLinks]="true" (pageChange)="pageChange()" />
   </div>
+<app-modal #modalConfirm title="Deseja remover o cliente?">
+  <ng-container *ngIf="clientSelected != null">
+    Nome: <span class="fw-bold me-1">{{clientSelected.name}}</span><br>
+    Telefone: <span class="fw-bold me-1">{{clientSelected.phone}}</span><br>
+    Data Nascimento: <span class="fw-bold me-1">{{clientSelected.dateOfbirth | date: 'dd/MM/yyyy'}}</span>
+  </ng-container>
+</app-modal>
