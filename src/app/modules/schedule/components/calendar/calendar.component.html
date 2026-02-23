@@ -1,10 +1,10 @@
 <div class="calendar">
     <div class="row">
-        <div class="col previus-month">
-            <img src="assets/svg/caret-left-fill.svg" width="20" height="20" alt="previus">
+        <div class="col" [ngClass]="{'previus-month':showPreviousMonthButton()}" (click)="onPreviusMonth()">
+            <img src="assets/svg/caret-left-fill.svg" width="20" height="20" alt="previus" *ngIf="showPreviousMonthButton()">
         </div>
-        <div class="col month-year">Março/2026</div>
-        <div class="col next-month">
+        <div class="col month-year">{{calendarMonth | date:'MMMM' : 'pt-PT' | titlecase}}/{{ calendarMonth.getFullYear()}}</div>
+        <div class="col next-month" (click)="onNextMonth()">
             <img src="assets/svg/caret-right-fill.svg" width="20" height="20" alt="next">
         </div>
     </div>

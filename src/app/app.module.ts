@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './modules/home/home.module';
 import { MaintenanceModule } from './modules/maintenance/maintenance.module';
 import { ScheduleModule } from './modules/schedule/schedule.module';
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { ScheduleModule } from './modules/schedule/schedule.module';
     ScheduleModule,
     HttpClientModule
 ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'pt'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
