@@ -1,1 +1,61 @@
-<p>create-appointment-page works!</p>
+<div class="container text-center">
+  <div class="row">
+    <div class="display-4">Fazer Agendamento</div>
+    <div class="col-6 board rounded shadow-sm p-4">
+      <app-form-appointment
+      [areas]="areas"
+      [professionals]="professionalsById"
+      [appointmentTypes]="appointmentTypes"
+      [searchClients]="searchClients"
+
+      (selectedAreaEvent)="onSelectedArea($event)"></app-form-appointment>
+    </div>
+    <div class="col-6 board rounded shadow-sm p-4">
+      <!--app-calendar></app-calendar-->
+      <!--app-time id="time"></app-time-->
+    </div>
+  </div>
+  <div class="d-grid gap-2 mt-2 px-5">
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary shadow-sm" type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" (click)="createAppointment()"    >Agendar</button>
+       <!--button class="btn btn-primary shadow-sm" type="button" data-bs-toggle="modal" data-bs-target="#confirmModal"
+      (click)="openModal(modalConfirm)">Agendar</button-->
+  </div>
+</div>
+<!--app-modal #modalConfirm title="Deseja confirmar o agendamento?">
+  <div class="modal-body">
+    <div class="alert alert-secondary" role="alert">
+      <div class="row">
+        <div class="col-2">Cliente:</div>
+        <div class="col-10 fw-bold">Maria da Silva</div>
+      </div>
+      <div class="row">
+        <div class="col-2">Data:</div>
+        <div class="col-10 fw-bold">25/09/2021</div>
+      </div>
+      <div class="row">
+        <div class="col-2">Horário:</div>
+        <div class="col-10 fw-bold">14:00</div>
+      </div>
+
+    </div>
+    <div class="alert alert-secondary" role="alert">
+      <div class="row">
+        <div class="col-2">Área:</div>
+        <div class="col-10 fw-bold">Estética</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Profissional:</div>
+        <div class="col-9 fw-bold">Márcia Pereira</div>
+      </div>
+      <div class="row">
+        <div class="col-2">Tipo:</div>
+        <div class="col-10 fw-bold">Particular</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Comentário:</div>
+        <div class="col-9 fw-bold">Parcelar em 3x</div>
+      </div>
+    </div>
+  </div>
+</app-modal-->

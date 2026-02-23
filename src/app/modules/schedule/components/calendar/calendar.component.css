@@ -1,0 +1,37 @@
+.previus-month {
+    cursor: pointer;
+}
+.next-month {
+    cursor: pointer;
+}
+.month-year {
+    cursor: pointer;
+    font-weight: 500;
+}
+.week-day {
+    font-weight: 500;
+    padding: 6px;
+    margin: 1px;
+}
+.day{
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 6px;
+    margin: 1px;
+    font-size: 0.9em;
+    color: white;
+    cursor: pointer;
+}
+.day-off {
+    background-color: whitesmoke;
+    color: gray;
+}
+.day-available{
+    background-color: #6c757d;
+}
+.day-available:hover{
+    background-color: #257325;
+}
+.day-selected {
+    background-color: #257325;
+}

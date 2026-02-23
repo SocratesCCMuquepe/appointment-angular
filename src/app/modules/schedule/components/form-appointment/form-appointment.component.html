@@ -1,0 +1,55 @@
+<form [formGroup]="appointmentForm" #ngAppointmentForm="ngForm">
+  <div class="formgroup">
+    <div class="mb-3">
+      <label for="area">Escolha uma area:</label>
+      <select type="area" id="area" name="area" class="form-control" formControlName="area" (change)="onAreaChange()">
+        <option *ngFor="let area of areas" [ngValue]="area">{{ area.name }}</option>
+      </select>
+      <div *ngIf="submitted" class="text-danger text-start">
+        <small *ngIf="appointmentForm.get('area')?.errors?.['required']">
+          O campo Área é obrigatório.
+        </small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="professional">Escolha um profissional:</label>
+      <select id="professional" name="professional" class="form-control" formControlName="professional">
+        <option *ngFor="let professional of professionals" [ngValue]="professional">{{ professional.name }}</option>
+      </select>
+      <div *ngIf="submitted" class="text-danger text-start">
+        <small *ngIf="appointmentForm.get('professional')?.errors?.['required']">
+          O campo Profissional é obrigatório.
+        </small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="appointmentType">Escolha um tipo de atendimento:</label>
+      <select id="appointmentType" name="appointmentType" class="form-control" formControlName="appointmentType">
+        <option *ngFor="let appointmentType of appointmentTypes" [ngValue]="appointmentType">{{ appointmentType.type }}
+        </option>
+      </select>
+      <div *ngIf="submitted" class="text-danger text-start">
+        <small *ngIf="appointmentForm.get('appointmentType')?.errors?.['required']">
+          O campo Tipo de Atendimento é obrigatório.
+        </small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="client">Crie ou digite o nome de um cliente:</label>
+      <input id="typeahead-basic" class="form-control" formControlName="client" [ngbTypeahead]="searchClients"
+        [resultFormatter]="formatter" [inputFormatter]="formatter" />
+      <div *ngIf="submitted" class="text-danger text-start">
+        <small *ngIf="appointmentForm.get('client')?.errors?.['required']">
+          O campo Cliente é obrigatório.
+        </small>
+      </div>
+      <div class="text-start" *ngIf="getSelectedClient().phone">
+        <small>Confirme o telefone do cliente: {{ getSelectedClient()?.phone }}</small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="date">Comentário</label>
+      <textarea id="comment" name="comment" formControlName="comment" class="form-control"></textarea>
+    </div>
+  </div>
+</form>

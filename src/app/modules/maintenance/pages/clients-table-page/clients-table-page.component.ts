@@ -27,7 +27,7 @@ export class ClientsTablePageComponent {
     this.loadClients();
   }
   loadClients() {
-    this.clientService.getClients(this.nameFillter, this.page).subscribe({
+    this.clientService.getClientsPage(this.nameFillter, this.page).subscribe({
       next: response => {
         this.clientPage.content = response.body;
         this.clientPage.numberOfElements = parseInt(response.headers.get('X-Total-Count') || '0');
